@@ -41,7 +41,7 @@ class Register
     						{	
     							?>
     					<div class="DK">Đăng Ký Tài Khoản Thành Công 
-    						<a href="/index.php?ctrl=login&func=index" method="POST">Đăng Nhập Ngay?</a>  </div>
+    						<a href="/mxh/index.php?ctrl=login&func=index" method="POST">Đăng Nhập Ngay?</a>  </div>
     						  <?php
     						} 
     						else 
