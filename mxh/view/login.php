@@ -16,7 +16,7 @@
     </head>
     <body>
 	
-	link Github: https://github.com/tuannha1999/LapTrinhWeb.git
+
     <form action="" method="POST">
         <div class="banner">
         <label > CHÀO MỪNG BẠN ĐẾN VỚI MẠNG XÃ HỘI</label>
