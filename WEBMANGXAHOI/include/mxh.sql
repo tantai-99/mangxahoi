@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1:3306
--- Thời gian đã tạo: Th12 12, 2020 lúc 02:51 PM
+-- Thời gian đã tạo: Th12 24, 2020 lúc 03:31 PM
 -- Phiên bản máy phục vụ: 10.4.10-MariaDB
 -- Phiên bản PHP: 7.3.12
 
@@ -30,12 +30,31 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `baiviet`;
 CREATE TABLE IF NOT EXISTS `baiviet` (
-  `idbaiviet` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `username` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
+  `idbaiviet` int(20) NOT NULL AUTO_INCREMENT,
+  `username` varchar(50) CHARACTER SET utf8 NOT NULL,
   `anhBV` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `thoigianBV` datetime NOT NULL,
-  `noidungBV` text COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `noidungBV` text COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`idbaiviet`),
+  KEY `username` (`username`)
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `baiviet`
+--
+
+INSERT INTO `baiviet` (`idbaiviet`, `username`, `anhBV`, `thoigianBV`, `noidungBV`) VALUES
+(26, 'nha@gmail.com', 'sapa.jpg', '2020-12-23 00:00:00', 'SAPA'),
+(27, 'nha@gmail.com', 'dongthapmuoi.jpg', '2020-12-23 00:00:00', 'Đồng Tháp '),
+(28, 'abc@gmail.com', 'Tây bắc.jpg', '2020-12-23 00:00:00', 'Tây bắc'),
+(29, 'abc@gmail.com', 'langhoa.jpg', '2020-12-23 00:00:00', 'Làng hoa'),
+(30, 'ngoan@gmail.com', 'bien.jpg', '2020-12-23 00:00:00', ''),
+(32, 'ngoan@gmail.com', 'ruongbacthang.jpg', '2020-12-23 00:00:00', 'Ruộng bậc thang '),
+(33, 'nha@gmail.com', '', '2020-12-24 00:00:00', 'aa'),
+(34, 'nha@gmail.com', 'tải 00xuống.jpg', '2020-12-24 00:00:00', 'Hồ Gươm'),
+(35, 'tai@gmail.com', 'mxh.sql', '2020-12-24 00:00:00', 'Hello'),
+(36, 'tai@gmail.com', 'mxh.sql', '2020-12-24 00:00:00', 'a'),
+(37, 'tai@gmail.com', 'tải xuống11.jpg', '2020-12-24 00:00:00', 'a');
 
 -- --------------------------------------------------------
 
@@ -103,9 +122,21 @@ CREATE TABLE IF NOT EXISTS `nguoidung` (
 --
 
 INSERT INTO `nguoidung` (`tentk`, `mk`, `hoten`, `ngaysinh`, `gioitinh`, `sdt`, `diachi`, `avatar`) VALUES
-('abc@gmail.com', '809f09f73d5a61070477b1d676155e25', 'ABC', '2020-12-16', 'Nữ', 234567891, '', ''),
-('ngoan@gmail.com', '98cabfe1d44661ccadeb92cb5490e891', 'ABC', '2020-12-15', 'Nữ', 123456789, '', ''),
-('nha@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Tuấn Nhã', '1999-02-18', '1', 376440058, '', '');
+('abc@gmail.com', '809f09f73d5a61070477b1d676155e25', 'Văn A', '2020-12-10', '1', 234567891, '', 'avatarmacdinh.jpg'),
+('ngoan@gmail.com', '809f09f73d5a61070477b1d676155e25', 'Ngoan', '2020-12-04', '1', 234567892, '', 'avatarmacdinh.jpg'),
+('nha@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Tuấn Nhã', '1999-02-26', '1', 376440058, '', 'images.jpg'),
+('tai@gmail.com', '57ab30a9ee5f4d2bfe06b7aa6c5fc594', 'Tấn Tài', '1999-11-03', '1', 379307950, '', 'avatarmacdinh.jpg'),
+('vanb@gmail.com', '809f09f73d5a61070477b1d676155e25', 'Nguyễn Thị B', '2020-12-04', '0', 123456787, '', 'avatarmacdinh.jpg');
+
+--
+-- Các ràng buộc cho các bảng đã đổ
+--
+
+--
+-- Các ràng buộc cho bảng `baiviet`
+--
+ALTER TABLE `baiviet`
+  ADD CONSTRAINT `baiviet_ibfk_1` FOREIGN KEY (`username`) REFERENCES `nguoidung` (`tentk`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
